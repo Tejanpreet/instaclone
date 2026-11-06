@@ -6,7 +6,7 @@ export const formatWithCommas = (value : number) : string => {
   return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 } 
 
-export function formatTimeAgo ( hoursAgo : number) :  string {
+export const  formatTimeAgo =  ( hoursAgo : number) :  string => {
   if (hoursAgo < 1){
     return 'Just now';
   }
@@ -23,3 +23,13 @@ export function formatTimeAgo ( hoursAgo : number) :  string {
   const weeks = Math.floor(days/7);
   return `${weeks} week${weeks === 1 ? '' : 's'} ago`;
 }
+
+export const formatTimeShort = (hoursAgo: number) : string => {
+  if (hoursAgo < 1) return 'now';
+  if (hoursAgo < 24) return `${hoursAgo}h`;
+  const days = Math.floor(hoursAgo / 24);
+  if (days < 7) return `${days}d`;
+  return `${Math.floor(days / 7)}w`;
+}
+
+

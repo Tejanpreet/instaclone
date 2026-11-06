@@ -1,7 +1,7 @@
 import { Ionicons } from '@expo/vector-icons';
 import { StyleSheet, Text, View } from 'react-native';
 
-import { Avatar } from '@/components/ui/avatar';
+import  Avatar  from '@/components/ui/avatar';
 import { Colors, FontSize, Spacing } from '@/constants/theme';
 
 const BUBBLE_SIZE = 88;

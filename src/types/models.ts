@@ -29,3 +29,12 @@ export type  post = {
   sharesCount: number;
   hoursAgo: number; // stored as a number so it never goes stale
 }
+
+export type Comment = {
+  id: string;
+  postId: string; // which post it belongs to
+  userId: string; // who wrote it
+  text: string;
+  likesCount: number;
+  hoursAgo: number;
+};

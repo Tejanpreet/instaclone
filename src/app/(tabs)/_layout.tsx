@@ -2,11 +2,15 @@ import {Ionicons , MaterialCommunityIcons}  from "@expo/vector-icons";
 import { Tabs } from 'expo-router';
 import { StyleSheet, View } from 'react-native';
 
-import TabIcon from '@/components/navigation/tab-icon';
+import Avatar  from '@/components/ui/avatar';
+import { CurrentUserID, getUserById } from '@/data/users';
+
+import TabIcon from '@/components/navigation/TabIcon';
 import { Colors } from '@/constants/theme';
 
 const colors = Colors.dark;
-const ICON_SIZE = 28;
+const iconSize = 28;
+const currentUser = getUserById(CurrentUserID);
 
 const TabLayout = () => {
   return (
@@ -26,7 +30,7 @@ const TabLayout = () => {
           name = "index"
           options = {{
             tabBarIcon : ({focused}) => (
-              <Ionicons name = {focused ? 'home' : 'home-outline'} size = {ICON_SIZE} color = {colors.text}
+              <Ionicons name = {focused ? 'home' : 'home-outline'} size = {iconSize} color = {colors.text}
               />),
           }}
           />
@@ -35,7 +39,7 @@ const TabLayout = () => {
           name = "reels"
           options = {{
             tabBarIcon : ({focused}) => (
-              <MaterialCommunityIcons name = {focused ? 'play-box' : 'play-box-outline'} size= {ICON_SIZE} color = {colors.text} />
+              <MaterialCommunityIcons name = {focused ? 'play-box' : 'play-box-outline'} size= {iconSize} color = {colors.text} />
             ),
           }}
           />
@@ -47,7 +51,7 @@ const TabLayout = () => {
               <TabIcon showDot>
                 <Ionicons
                   name = {focused ? 'paper-plane' : 'paper-plane-outline'}
-                  size = {ICON_SIZE - 2 }
+                  size = {iconSize - 2 }
                   color = {colors.text}/>
               </TabIcon>
             ),
@@ -58,7 +62,7 @@ const TabLayout = () => {
           name = "explore"
           options = {{
             tabBarIcon : ({focused}) => (
-              <Ionicons name = {focused ? 'search' : 'search-outline'} size = {ICON_SIZE} color = {colors.text}/>
+              <Ionicons name = {focused ? 'search' : 'search-outline'} size = {iconSize} color = {colors.text}/>
             )
           }}
         />
@@ -68,9 +72,10 @@ const TabLayout = () => {
           options = {{
             tabBarIcon : ({focused})=> (
               <TabIcon showDot>
-              {/* Temporary: replaced by the real <Avatar /> in Segment 4 */}
-              <View style={[styles.avatar, focused && styles.avatarFocused]} />
-            </TabIcon>
+                  <View style={[styles.avatarFrame, focused && styles.avatarFocused]}>
+                  {currentUser && <Avatar uri={currentUser.avatarUrl} size={iconSize - 2} />}
+                  </View>
+              </TabIcon>
             )
           }}/>
     </Tabs>
@@ -80,14 +85,13 @@ const TabLayout = () => {
 export default TabLayout;
 
 const styles = StyleSheet.create({
-  avatar: {
-    width: ICON_SIZE,
-    height: ICON_SIZE,
-    borderRadius: ICON_SIZE / 2,
-    backgroundColor: colors.surface,
+  // A transparent 1.5px border is always there, so the size never changes when focused
+  avatarFrame: {
+    borderRadius: iconSize,
+    borderWidth: 1.5,
+    borderColor: 'transparent',
   },
   avatarFocused: {
-    borderWidth: 2,
     borderColor: colors.text,
   },
 });

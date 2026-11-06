@@ -1,7 +1,7 @@
 import {Link} from "expo-router";
 import {Text} from "react-native";
 
-import {placeholderLinkStyle, PlaceholderScreen} from "@/components/dev/placeholder-screen";
+import {placeholderLinkStyle, PlaceholderScreen} from "@/components/dev/PlaceholderScreen";
 
 const ExploreScreen = () => {
   return (

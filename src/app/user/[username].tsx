@@ -1,7 +1,7 @@
 import {Stack , useLocalSearchParams} from "expo-router";
 import {Text} from "react-native";
 
-import {PlaceholderScreen , placeholderLinkStyle} from "@/components/dev/placeholder-screen";
+import {PlaceholderScreen , placeholderLinkStyle} from "@/components/dev/PlaceholderScreen";
 
 const UserProfileScreen = () => {
   const {username} = useLocalSearchParams<{username : string}>();

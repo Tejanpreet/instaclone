@@ -1,10 +1,10 @@
 import { FlatList, StyleSheet } from 'react-native';
 
-import  StoryBubble  from '@/components/feed/story-bubble';
+import  StoryBubble  from '@/components/feed/StoryBubble';
 import { Spacing } from '@/constants/theme';
-import { CURRENT_USER_ID, getUserById, users } from '@/data/users';
+import { CurrentUserID, getUserById, users } from '@/data/users';
 
-const currentUser = getUserById(CURRENT_USER_ID);
+const currentUser = getUserById(CurrentUserID);
 const storyUsers = users.filter((user) => user.hasActiveStory);
 
 const StoriesBar = () => {
@@ -15,9 +15,11 @@ const StoriesBar = () => {
       }
       keyExtractor={(user) => user.id}
       showsHorizontalScrollIndicator = {false}
+      contentContainerStyle={styles.content}
       ListHeaderComponent={
         currentUser ? <StoryBubble avatarUrl = {currentUser.avatarUrl} label = "You Story" isOwnStory/> : undefined
       }
+      ListHeaderComponentStyle={styles.item}
       renderItem = {({item}) => <StoryBubble avatarUrl = {item.avatarUrl} label = {item.username} /> }
       />
   );
@@ -27,8 +29,11 @@ export default StoriesBar;
 
 const styles = StyleSheet.create({
   content: {
-    paddingHorizontal: Spacing.md,
+    paddingLeft: Spacing.md,
+    paddingRight: Spacing.xs ,
     paddingVertical: Spacing.sm,
-    gap: Spacing.lg,
+  },
+  item: {
+    marginRight: Spacing.lg,
   },
 });

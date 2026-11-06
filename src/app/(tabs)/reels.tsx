@@ -1,4 +1,4 @@
-import { PlaceholderScreen} from '@/components/dev/placeholder-screen';
+import { PlaceholderScreen} from '@/components/dev/PlaceholderScreen';
 
 const ReelsScreen = () => {
   return <PlaceholderScreen title = "Reels" />;

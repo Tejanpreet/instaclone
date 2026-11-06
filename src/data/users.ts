@@ -2,7 +2,7 @@ import type { User } from "@/types/models";
 
 const avatar = (n: number ) => {return `https://i.pravatar.cc/150?img=${n}`};
 
-export const CURRENT_USER_ID = 'u0';
+export const CurrentUserID = 'u0';
 
 export const users : User[] = [
   {

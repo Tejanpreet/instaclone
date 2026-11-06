@@ -1,3 +1,4 @@
+import { GrandHotel_400Regular, useFonts } from '@expo-google-fonts/grand-hotel';
 import { DarkTheme , Stack , ThemeProvider } from "expo-router";
 import {StatusBar} from "expo-status-bar";
 
@@ -21,6 +22,15 @@ const navigationTheme = {
 };
 
 const RootLayout = () => {
+
+  // Load the required logo font before showing anything , so the text never jumps the fonts 
+  const [fontsLoaded] = useFonts({GrandHotel_400Regular});
+
+  // gaurd clause if it returns false
+  if (!fontsLoaded){
+    return null;
+  }
+  
   return (
     <ThemeProvider value={navigationTheme}>
       <StatusBar style="light" />
@@ -37,7 +47,7 @@ const RootLayout = () => {
 
       {/*Screens pushed ON top of the tabs (tab bar is hidden) */}
 
-      <Stack.Screen name = "post/[id]" options = {{title : 'Post'}} />
+      <Stack.Screen name = "post/[id]" options = {{title : 'Posts' , headerTitleAlign: 'center'}} />
       <Stack.Screen name = "user/[username]" /> 
       <Stack.Screen name="search" options={{ headerShown: false }} />
 

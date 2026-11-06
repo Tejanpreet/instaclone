@@ -1,4 +1,4 @@
-import { PlaceholderScreen} from '@/components/dev/placeholder-screen';
+import { PlaceholderScreen} from '@/components/dev/PlaceholderScreen';
 
 const ProfileScreen = () => {
   return <PlaceholderScreen title = "Profile" />;

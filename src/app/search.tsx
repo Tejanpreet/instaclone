@@ -1,7 +1,7 @@
 import {router} from 'expo-router';
 import {Pressable , Text} from 'react-native';
 
-import {PlaceholderScreen , placeholderLinkStyle} from '@/components/dev/placeholder-screen';
+import {PlaceholderScreen , placeholderLinkStyle} from '@/components/dev/PlaceholderScreen';
 
 const SearchScreen = () => {
   return (
