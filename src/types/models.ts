@@ -28,6 +28,8 @@ export type  post = {
   repostsCount: number;
   sharesCount: number;
   hoursAgo: number; // stored as a number so it never goes stale
+  viewsCount?: number; // shown on Explore tiles
+  isPinned?: boolean; // pinned to the top of the author's profile
 }
 
 export type Comment = {
@@ -37,4 +39,12 @@ export type Comment = {
   text: string;
   likesCount: number;
   hoursAgo: number;
+};
+
+export type Conversation = {
+  id: string;
+  userId: string; // the other person
+  lastMessage: string;
+  hoursAgo: number;
+  isUnread: boolean;
 };

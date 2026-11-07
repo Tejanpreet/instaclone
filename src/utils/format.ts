@@ -32,4 +32,23 @@ export const formatTimeShort = (hoursAgo: number) : string => {
   return `${Math.floor(days / 7)}w`;
 }
 
+export const formatCompact = (value: number):string => {
+  // 1_000_000 means same as 1000000 same for other if statements 
+  if (value >= 1_000_000){
+      return `${oneDecimal(value / 1_000_000)} M`;
+  } 
+
+  if (value >= 100_000) {
+    return `${Math.floor(value / 1_000)}K`;
+  }
+
+  if (value >= 10_000){
+     return `${oneDecimal(value / 1_000)}K`;
+  }
+  return formatWithCommas(value);
+}
+
+const  oneDecimal = (value: number): string =>  {
+  return (Math.floor(value * 10) / 10).toString();
+}
 

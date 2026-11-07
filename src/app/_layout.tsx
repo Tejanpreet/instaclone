@@ -49,7 +49,7 @@ const RootLayout = () => {
 
       <Stack.Screen name = "post/[id]" options = {{title : 'Posts' , headerTitleAlign: 'center'}} />
       <Stack.Screen name = "user/[username]" /> 
-      <Stack.Screen name="search" options={{ headerShown: false }} />
+      <Stack.Screen name="search" options={{ headerShown: false , animation: 'fade' }} />
 
       {/* Comments slides up as a bottom sheet, like Instagram */}
 

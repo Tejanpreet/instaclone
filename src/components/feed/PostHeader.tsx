@@ -6,6 +6,7 @@ import Avatar  from '@/components/ui/avatar';
 import  VerifiedBadge  from '@/components/ui/VerifiedBadge';
 import { Colors, FontSize, Spacing } from '@/constants/theme';
 import type { User } from '@/types/models';
+import { CurrentUserID } from '@/data/users';
 
 type PostHeaderProps = {
   author: User;
@@ -59,7 +60,7 @@ const PostHeaderProps = ({author, collaborator, showFollow = true} : PostHeaderP
         )}
       </Text>
 
-      {showFollow && !author.isFollowing && (
+      {showFollow && !author.isFollowing && author.id !== CurrentUserID && (
         <Pressable style={styles.followButton}>
           <Text style={styles.followText}>Follow</Text>
         </Pressable>
